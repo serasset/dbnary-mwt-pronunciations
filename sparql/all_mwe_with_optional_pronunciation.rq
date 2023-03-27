@@ -1,0 +1,12 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
+
+SELECT ?e ?t ?pr ?mweOrLE
+FROM <http://kaiko.getalp.org/dbnary/eng>
+WHERE {
+  ?e a ?mweOrLE ; rdfs:label ?t .
+  OPTIONAL { ?e ontolex:canonicalForm / ontolex:phoneticRep ?pr }
+    VALUES ?mweOrLE
+           { ontolex:MultiWordExpression
+             }
+}
